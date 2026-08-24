@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aradhya Singh | AI & ML Developer Portfolio</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description"
+        content="Portfolio of Aradhya Singh, a Computer Science student specializing in AI, Machine Learning, Data Analysis, and Python development. Check out my projects, skills, and chat with my AI assistant.">
+    <meta name="keywords"
+        content="Aradhya Singh, AI Developer, Machine Learning Portfolio, Python Developer, Data Analyst, GLA University">
+    <meta name="author" content="Aradhya Singh">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aradhya Singh | AI & ML Developer Portfolio">
+    <meta property="og:description"
+        content="Portfolio of Aradhya Singh, a Computer Science student specializing in AI, Machine Learning, Data Analysis, and Python development.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Canvas for Neural Network Animation -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent"></span><span class="gradient-text"
+                    style="font-weight: 800;">Aradhya</span><span class="logo-accent">dev</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link active">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="Aradhya_Singh_Resume.pdf" download="Aradhya_Singh_Resume.pdf" class="btn btn-secondary nav-btn" style="padding: 8px 18px; font-size: 0.85rem;">
+                    <i data-lucide="download" style="width: 14px; height: 14px;"></i>
+                    <span>Resume</span>
+                </a>
+                <a href="#contact" class="btn btn-outline nav-btn">Let's Talk</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content container">
+                <div class="hero-text-block">
+                    <span class="badge glow-cyan">AI & ML Engineer</span>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text">Aradhya Singh</span>
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        Building the future with <span id="typed-text"></span><span class="cursor">|</span>
+                    </h2>
+                    <p class="hero-desc">
+                        Computer Science (AI & ML) student with hands-on experience in machine learning, data analysis,
+                        and Python development. Seeking to apply technical skills in real-world projects and build
+                        innovative AI-driven solutions.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>Explore Projects</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="Aradhya_Singh_Resume.pdf" download="Aradhya_Singh_Resume.pdf" class="btn btn-outline">
+                            <i data-lucide="download"></i>
+                            <span>Download Resume</span>
+                        </a>
+                        <button class="btn btn-secondary open-chat-btn">
+                            <i data-lucide="bot"></i>
+                            <span>Chat with Aura</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="neural-sphere-container">
+                        <div class="neural-ring ring-1"></div>
+                        <div class="neural-ring ring-2"></div>
+                        <div class="neural-ring ring-3"></div>
+                        <div class="neural-core">
+                            <img src="img.jpeg" alt="Aradhya Singh Profile Picture" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll down</span>
+                <i data-lucide="chevrons-down" class="bounce"></i>
+            </div>
+        </section>
+
+        <!-- About & Education Section -->
+        <section id="about" class="about-section container">
+            <div class="section-title-wrapper">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Academic & Professional Journey</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card intro-card">
+                    <div class="card-glow"></div>
+                    <i data-lucide="user" class="card-icon cyan"></i>
+                    <h3>Professional Summary</h3>
+                    <p>
+                        I am highly motivated to explore the intersection of artificial intelligence and software
+                        engineering. My background includes building and optimizing machine learning models, cleaning
+                        datasets for peak performance, and designing interactive dashboards to reveal key analytical
+                        insights.
+                    </p>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Kanpur, India</span>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="mail"></i>
+                            <span>aradhya09.singh@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-card education-card">
+                    <div class="card-glow"></div>
+                    <i data-lucide="graduation-cap" class="card-icon purple"></i>
+                    <h3>Education</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h4>B.Tech in Computer Science (AI & ML)</h4>
+                            <span class="timeline-date">2025 - 2029</span>
+                        </div>
+                        <p class="timeline-sub">GLA University, Mathura</p>
+                        <p class="timeline-desc">Specializing in artificial intelligence architectures, machine learning
+                            frameworks, data structures, and advanced algorithms.</p>
+                    </div>
+                </div>
+
+                <div class="about-card certifications-card">
+                    <div class="card-glow"></div>
+                    <i data-lucide="award" class="card-icon blue"></i>
+                    <h3>Certifications & Credentials</h3>
+                    <ul class="cert-list">
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <a href="https://www.hackerrank.com/profile/aradhya09_singh" target="_blank" rel="noopener noreferrer" class="link-glow">
+                                    <strong>Problem Solving (Intermediate)</strong>
+                                </a>
+                                <span>HackerRank Verified Skill</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <a href="https://www.hackerrank.com/profile/aradhya09_singh" target="_blank" rel="noopener noreferrer" class="link-glow">
+                                    <strong>SQL (Intermediate)</strong>
+                                </a>
+                                <span>HackerRank Verified Skill</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <a href="https://www.hackerrank.com/profile/aradhya09_singh" target="_blank" rel="noopener noreferrer" class="link-glow">
+                                    <strong>JavaScript (Intermediate)</strong>
+                                </a>
+                                <span>HackerRank Verified Skill</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <a href="https://www.hackerrank.com/profile/aradhya09_singh" target="_blank" rel="noopener noreferrer" class="link-glow">
+                                    <strong>Python (Basic) & Python 3-Star Badge</strong>
+                                </a>
+                                <span>HackerRank Credentials</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <strong>AI for Beginners</strong>
+                                <span>HP LIFE</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <strong>Critical Thinking in the AI Era</strong>
+                                <span>HP LIFE</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <strong>Deloitte Australia Tech Simulation</strong>
+                                <span>Forage</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cert-bullet"></div>
+                            <div class="cert-info">
+                                <strong>TATA GenAI Data Analytics Simulation</strong>
+                                <span>Forage</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-title-wrapper text-center">
+                    <span class="section-tag">Stack</span>
+                    <h2 class="section-title">Core Skills & Technologies</h2>
+                    <div class="section-underline mx-auto"></div>
+                </div>
+
+                <div class="skills-tabs">
+                    <button class="tab-btn active" data-filter="all">All Tech</button>
+                    <button class="tab-btn" data-filter="ai-ml">AI & ML</button>
+                    <button class="tab-btn" data-filter="languages">Languages</button>
+                    <button class="tab-btn" data-filter="analytics">Data Analytics</button>
+                    <button class="tab-btn" data-filter="web-tools">Web & Tools</button>
+                </div>
+
+                <div class="skills-grid" id="skills-grid">
+                    <!-- Python -->
+                    <div class="skill-card" data-category="languages ai-ml">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon python-icon">Py</span>
+                        </div>
+                        <h4>Python</h4>
+                        <p>Core programming, automation, and model scripting</p>
+                    </div>
+                    <!-- Java -->
+                    <div class="skill-card" data-category="languages">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon java-icon">Ja</span>
+                        </div>
+                        <h4>Java</h4>
+                        <p>Object-oriented concepts, algorithms, and application structures</p>
+                    </div>
+                    <!-- SQL -->
+                    <div class="skill-card" data-category="analytics web-tools">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon sql-icon">SQL</span>
+                        </div>
+                        <h4>SQL Databases</h4>
+                        <p>Relational queries, database structuring, and joining tables</p>
+                    </div>
+                    <!-- Machine Learning -->
+                    <div class="skill-card" data-category="ai-ml">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon ml-icon">ML</span>
+                        </div>
+                        <h4>Machine Learning</h4>
+                        <p>Regression, classification, preprocessing, model tuning</p>
+                    </div>
+                    <!-- Artificial Intelligence -->
+                    <div class="skill-card" data-category="ai-ml">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon ai-icon">AI</span>
+                        </div>
+                        <h4>Artificial Intelligence</h4>
+                        <p>Neural networks, algorithms, generative workflows</p>
+                    </div>
+                    <!-- Scikit-learn -->
+                    <div class="skill-card" data-category="ai-ml">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon sklearn-icon">Sk</span>
+                        </div>
+                        <h4>Scikit-learn</h4>
+                        <p>Supervised learning algorithms and evaluation pipelines</p>
+                    </div>
+                    <!-- Pandas -->
+                    <div class="skill-card" data-category="analytics">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon pandas-icon">Pd</span>
+                        </div>
+                        <h4>Pandas</h4>
+                        <p>Data manipulation, aggregation, cleaning, and structures</p>
+                    </div>
+                    <!-- NumPy -->
+                    <div class="skill-card" data-category="analytics">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon numpy-icon">Np</span>
+                        </div>
+                        <h4>NumPy</h4>
+                        <p>Vectorized math operations, matrix operations, array logic</p>
+                    </div>
+                    <!-- Matplotlib -->
+                    <div class="skill-card" data-category="analytics">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon plt-icon">Pl</span>
+                        </div>
+                        <h4>Matplotlib</h4>
+                        <p>Scientific charting, custom visualizations, and reports</p>
+                    </div>
+                    <!-- HTML/CSS -->
+                    <div class="skill-card" data-category="web-tools">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon html-icon">H/C</span>
+                        </div>
+                        <h4>HTML5 & CSS3</h4>
+                        <p>Responsive structuring, grid layout, animations, semantic styling</p>
+                    </div>
+                    <!-- JS -->
+                    <div class="skill-card" data-category="web-tools">
+                        <div class="skill-icon-wrapper">
+                            <span class="tech-icon js-icon">JS</span>
+                        </div>
+                        <h4>JavaScript</h4>
+                        <p>Dynamic DOM modifications, asynchronous fetch API, interactives</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section container">
+            <div class="section-title-wrapper">
+                <span class="section-tag">History</span>
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <div class="experience-container">
+                <div class="exp-timeline-bar"></div>
+
+                <div class="exp-item">
+                    <div class="exp-dot"></div>
+                    <div class="exp-content-card">
+                        <div class="card-glow"></div>
+                        <div class="exp-header">
+                            <div>
+                                <h3 class="exp-title">Machine Learning Intern</h3>
+                                <h4 class="exp-company">Jyesta Corporation Limited</h4>
+                            </div>
+                            <span class="exp-date">Internship</span>
+                        </div>
+                        <ul class="exp-details">
+                            <li>Developed and trained machine learning models using Python and Scikit-learn to improve
+                                prediction accuracy across various target variables.</li>
+                            <li>Cleaned, preprocessed, and engineered complex datasets, ensuring optimal feature
+                                selection for model training and reduction of training noise.</li>
+                            <li>Performed end-to-end data analysis and created visual dashboards to extract actionable
+                                business and research insights.</li>
+                            <li>Collaborated actively with cross-functional team members on AI/ML projects, contributing
+                                directly to performance benchmarks.</li>
+                            <li>Acquired deep hands-on expertise in industry-standard ML development cycles, tooling,
+                                and workflow integrations.</li>
+                        </ul>
+                        <div class="exp-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Data Preprocessing</span>
+                            <span class="tag">Dashboard Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-title-wrapper text-center">
+                    <span class="section-tag">Portfolio</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="section-underline mx-auto"></div>
+                </div>
+
+                <div class="featured-project-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; margin-bottom: 50px;">
+                    <!-- Project 1: Aura Weather Dashboard -->
+                    <div class="project-card featured-card" style="border-color: rgba(139, 92, 246, 0.3); background: linear-gradient(135deg, rgba(6, 182, 212, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);">
+                        <div class="card-glow"></div>
+                        <div style="position: absolute; top: 12px; right: 16px; font-family: var(--font-heading); font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--color-accent); border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(139, 92, 246, 0.08); padding: 4px 10px; border-radius: 12px;">Featured Project</div>
+                        <div class="project-header" style="margin-bottom: 12px;">
+                            <i data-lucide="cloud-sun" class="project-icon" style="color: var(--color-accent); width: 32px; height: 32px;"></i>
+                            <a href="weather/index.html" class="project-link-icon">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                        <h3 style="font-size: 1.4rem;">Aura Weather Dashboard</h3>
+                        <p>A dynamic, glassmorphic weather application utilizing the free Open-Meteo API for live global telemetry. Features custom weather canvas particle overlays (rain, storm, snow animations), a client-side linear regression ML predictor model, and **Aura**, an integrated AI Weather Advisor providing real-time activity planning and meteorological guidance.</p>
+                        <div class="project-meta" style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="project-lang">
+                                <span class="lang-dot" style="background-color: var(--color-accent)"></span>
+                                <span>HTML &bull; CSS &bull; JS &bull; AI</span>
+                            </span>
+                            <a href="weather/index.html" class="btn btn-primary btn-sm">Launch App</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: NexusNews Global Aggregator -->
+                    <div class="project-card featured-card" style="border-color: rgba(6, 182, 212, 0.3); background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(6, 182, 212, 0.03) 100%);">
+                        <div class="card-glow"></div>
+                        <div style="position: absolute; top: 12px; right: 16px; font-family: var(--font-heading); font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--color-primary); border: 1px solid rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.08); padding: 4px 10px; border-radius: 12px;">Featured Project</div>
+                        <div class="project-header" style="margin-bottom: 12px;">
+                            <i data-lucide="newspaper" class="project-icon" style="color: var(--color-primary); width: 32px; height: 32px;"></i>
+                            <a href="news/index.html" class="project-link-icon">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                        <h3 style="font-size: 1.4rem;">NexusNews Aggregator</h3>
+                        <p>A premium global news website that aggregates articles from global sources. Features an **integrated conversational assistant (Aura AI)** for summarizing articles and answering questions contextually, live search filters, an immersive reader mode with typography controls, bookmarks drawer, and dynamic weather/market telemetry widgets.</p>
+                        <div class="project-meta" style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="project-lang">
+                                <span class="lang-dot" style="background-color: var(--color-primary)"></span>
+                                <span>HTML &bull; CSS &bull; JS &bull; AI</span>
+                            </span>
+                            <a href="news/index.html" class="btn btn-primary btn-sm">Launch App</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Celestia Kitchen Restaurant Website -->
+                    <div class="project-card featured-card" style="border-color: rgba(139, 92, 246, 0.3); background: linear-gradient(135deg, rgba(6, 182, 212, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);">
+                        <div class="card-glow"></div>
+                        <div style="position: absolute; top: 12px; right: 16px; font-family: var(--font-heading); font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--color-accent); border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(139, 92, 246, 0.08); padding: 4px 10px; border-radius: 12px;">Featured Project</div>
+                        <div class="project-header" style="margin-bottom: 12px;">
+                            <i data-lucide="utensils" class="project-icon" style="color: var(--color-accent); width: 32px; height: 32px;"></i>
+                            <a href="restaurant/index.html" class="project-link-icon">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                        <h3 style="font-size: 1.4rem;">Celestia Kitchen</h3>
+                        <p>A premium fine dining restaurant website featuring an **integrated conversational AI assistant (Aura AI)** to help users explore seasonal menus and check details. Includes an interactive menu with dietary filters, a real-time reservation booking scheduler that dynamically checks seat availability, and RSVP modules for exclusive astronomical events.</p>
+                        <div class="project-meta" style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="project-lang">
+                                <span class="lang-dot" style="background-color: var(--color-accent)"></span>
+                                <span>HTML &bull; CSS &bull; JS &bull; AI</span>
+                            </span>
+                            <a href="restaurant/index.html" class="btn btn-primary btn-sm">Launch App</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Aura Analytics Dashboard -->
+                    <div class="project-card featured-card" style="border-color: rgba(6, 182, 212, 0.3); background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(6, 182, 212, 0.03) 100%);">
+                        <div class="card-glow"></div>
+                        <div style="position: absolute; top: 12px; right: 16px; font-family: var(--font-heading); font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--color-primary); border: 1px solid rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.08); padding: 4px 10px; border-radius: 12px;">Featured Project</div>
+                        <div class="project-header" style="margin-bottom: 12px;">
+                            <i data-lucide="line-chart" class="project-icon" style="color: var(--color-primary); width: 32px; height: 32px;"></i>
+                            <a href="sales/index.html" class="project-link-icon">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                        <h3 style="font-size: 1.4rem;">Aura Analytics</h3>
+                        <p>A premium Sales Intelligence Dashboard synchronized with a live Supabase database. Features custom Chart.js visualizations (revenue trends, product contributions, rep performance comparisons), interactive date range filters, dynamic simulated transaction seeding, and an active customer/rep portfolio ledger.</p>
+                        <div class="project-meta" style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="project-lang">
+                                <span class="lang-dot" style="background-color: var(--color-primary)"></span>
+                                <span>HTML &bull; CSS &bull; JS &bull; DB</span>
+                            </span>
+                            <a href="sales/index.html" class="btn btn-primary btn-sm">Launch App</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-info-note">
+                    <i data-lucide="github" class="github-load-icon"></i>
+                    <span>Dynamically syncing projects from GitHub...</span>
+                </div>
+
+                <div class="projects-grid" id="github-projects-grid">
+                    <!-- Dynamic cards will load here. Fallback static cards are in JS in case rate limit occurs. -->
+                    <div class="project-skeleton"></div>
+                    <div class="project-skeleton"></div>
+                    <div class="project-skeleton"></div>
+                </div>
+
+                <div class="projects-cta text-center">
+                    <a href="https://github.com/Aradhyabuilds-codes" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline">
+                        <i data-lucide="github"></i>
+                        <span>See More on GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section container">
+            <div class="section-title-wrapper">
+                <span class="section-tag">Get in Touch</span>
+                <h2 class="section-title">Start a Conversation</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <h3>Contact Information</h3>
+                    <p>Have an interesting opportunity or want to collaborate on an AI/ML project? Drop a line, email,
+                        or message me via LinkedIn!</p>
+
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <div class="detail-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div class="detail-text">
+                                <span>Email</span>
+                                <a href="mailto:aradhya09.singh@gmail.com"
+                                    class="link-glow">aradhya09.singh@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Phone removed by request -->
+
+                        <div class="contact-detail-item">
+                            <div class="detail-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div class="detail-text">
+                                <span>Location</span>
+                                <span>Kanpur, Uttar Pradesh, India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/Aradhyabuilds-codes" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/aradhya-s-33861528" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Name</label>
+                                <input type="text" id="form-name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Email</label>
+                                <input type="email" id="form-email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject">Subject</label>
+                            <input type="text" id="form-subject" required placeholder="Project Collaboration">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" required rows="5"
+                                placeholder="Let me know how I can help you..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">
+                            <span>Send Message</span>
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                    <div id="form-feedback" class="form-feedback-msg hidden"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- AI Chatbot Assistant -->
+    <div class="ai-chat-widget" id="ai-chat-widget">
+        <button class="chat-toggle-btn" id="chat-toggle-btn" aria-label="Open AI Assistant">
+            <span class="chat-pulse"></span>
+            <i data-lucide="bot" class="icon-open"></i>
+            <i data-lucide="x" class="icon-close"></i>
+        </button>
+
+        <div class="chat-container-card" id="chat-container-card">
+            <div class="chat-header">
+                <div class="chat-bot-avatar">
+                    <i data-lucide="sparkles"></i>
+                </div>
+                <div class="chat-bot-info">
+                    <h4>Aura</h4>
+                    <span class="bot-status">Online • Ask me anything</span>
+                </div>
+                <button class="chat-close" id="chat-close-btn" aria-label="Close Chat">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <!-- Gemini Key Setup Panel (Optional real AI) -->
+            <div class="gemini-setup-panel" id="gemini-setup-panel">
+                <div class="setup-header">
+                    <i data-lucide="key"></i>
+                    <span>Connect Live Gemini API (Optional)</span>
+                </div>
+                <p>Enter your Gemini API key to chat using a real Gemini LLM context. Otherwise, the local rule-based
+                    smart AI model will answer.</p>
+                <div class="setup-inputs">
+                    <input type="password" id="gemini-api-key" placeholder="AIzaSy...">
+                    <button class="btn btn-primary btn-sm" id="save-gemini-key">Save</button>
+                </div>
+                <div class="setup-feedback" id="gemini-key-status"></div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message bot">
+                    <div class="msg-bubble">
+                        Hello! I am Aura, Aradhya's AI Resume Assistant. Ask me anything about Aradhya's experience,
+                        projects, skills, education, or how to contact him.
+                        <div class="suggested-prompts">
+                            <button class="suggest-btn">What are his technical skills?</button>
+                            <button class="suggest-btn">Tell me about his internship.</button>
+                            <button class="suggest-btn">Show me his education details.</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-wrapper">
+                <input type="text" id="chat-input" placeholder="Type your question..." autocomplete="off">
+                <button id="chat-send" aria-label="Send message">
+                    <i data-lucide="arrow-up"></i>
+                </button>
+            </div>
+
+            <div class="chat-footer-links">
+                <button id="toggle-gemini-panel" class="toggle-gemini-link">
+                    <i data-lucide="settings"></i>
+                    <span>Gemini API Setup</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-bottom">
+        <div class="container footer-content">
+            <p>&copy; 2026 Aradhya Singh. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/Aradhyabuilds-codes" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/aradhya-s-33861528" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script file -->
+    <script src="script.js"></script>
+</body>
+
+</html>
