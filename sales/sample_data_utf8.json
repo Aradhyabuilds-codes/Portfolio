@@ -1,0 +1,200 @@
+﻿{
+    "value":  [
+                  {
+                      "daily_metrics":  [
+                                            {
+                                                "order_date":  "2026-03-01",
+                                                "no_of_sales":  24,
+                                                "total_revenue":  18420.8
+                                            },
+                                            {
+                                                "order_date":  "2026-03-02",
+                                                "no_of_sales":  11,
+                                                "total_revenue":  7668.88
+                                            },
+                                            {
+                                                "order_date":  "2026-03-03",
+                                                "no_of_sales":  14,
+                                                "total_revenue":  10090
+                                            },
+                                            {
+                                                "order_date":  "2026-03-04",
+                                                "no_of_sales":  12,
+                                                "total_revenue":  8727.16
+                                            },
+                                            {
+                                                "order_date":  "2026-03-05",
+                                                "no_of_sales":  12,
+                                                "total_revenue":  8117.42
+                                            },
+                                            {
+                                                "order_date":  "2026-03-06",
+                                                "no_of_sales":  11,
+                                                "total_revenue":  7456.85
+                                            },
+                                            {
+                                                "order_date":  "2026-03-07",
+                                                "no_of_sales":  6,
+                                                "total_revenue":  3249.25
+                                            },
+                                            {
+                                                "order_date":  "2026-03-08",
+                                                "no_of_sales":  9,
+                                                "total_revenue":  5678.89
+                                            },
+                                            {
+                                                "order_date":  "2026-03-09",
+                                                "no_of_sales":  4,
+                                                "total_revenue":  2454.23
+                                            },
+                                            {
+                                                "order_date":  "2026-03-10",
+                                                "no_of_sales":  15,
+                                                "total_revenue":  8826.85
+                                            },
+                                            {
+                                                "order_date":  "2026-03-11",
+                                                "no_of_sales":  20,
+                                                "total_revenue":  15152.5
+                                            },
+                                            {
+                                                "order_date":  "2026-03-12",
+                                                "no_of_sales":  7,
+                                                "total_revenue":  8468.65
+                                            },
+                                            {
+                                                "order_date":  "2026-03-13",
+                                                "no_of_sales":  12,
+                                                "total_revenue":  8388.18
+                                            },
+                                            {
+                                                "order_date":  "2026-03-14",
+                                                "no_of_sales":  13,
+                                                "total_revenue":  8751.77
+                                            },
+                                            {
+                                                "order_date":  "2026-03-15",
+                                                "no_of_sales":  14,
+                                                "total_revenue":  8420.82
+                                            },
+                                            {
+                                                "order_date":  "2026-03-16",
+                                                "no_of_sales":  11,
+                                                "total_revenue":  6261.86
+                                            },
+                                            {
+                                                "order_date":  "2026-03-17",
+                                                "no_of_sales":  11,
+                                                "total_revenue":  10109.6
+                                            },
+                                            {
+                                                "order_date":  "2026-03-18",
+                                                "no_of_sales":  22,
+                                                "total_revenue":  14498.6
+                                            },
+                                            {
+                                                "order_date":  "2026-03-19",
+                                                "no_of_sales":  19,
+                                                "total_revenue":  14170.5
+                                            },
+                                            {
+                                                "order_date":  "2026-03-20",
+                                                "no_of_sales":  9,
+                                                "total_revenue":  5475.75
+                                            },
+                                            {
+                                                "order_date":  "2026-03-21",
+                                                "no_of_sales":  8,
+                                                "total_revenue":  7366.1
+                                            },
+                                            {
+                                                "order_date":  "2026-03-22",
+                                                "no_of_sales":  4,
+                                                "total_revenue":  4318.64
+                                            },
+                                            {
+                                                "order_date":  "2026-03-23",
+                                                "no_of_sales":  9,
+                                                "total_revenue":  5839.81
+                                            }
+                                        ],
+                      "monthly_metrics":  [
+                                              {
+                                                  "year":  2026,
+                                                  "month":  1,
+                                                  "no_of_sales":  322
+                                              },
+                                              {
+                                                  "year":  2026,
+                                                  "month":  2,
+                                                  "no_of_sales":  402
+                                              },
+                                              {
+                                                  "year":  2026,
+                                                  "month":  3,
+                                                  "no_of_sales":  464
+                                              },
+                                              {
+                                                  "year":  2026,
+                                                  "month":  4,
+                                                  "no_of_sales":  673
+                                              },
+                                              {
+                                                  "year":  2026,
+                                                  "month":  5,
+                                                  "no_of_sales":  970
+                                              }
+                                          ],
+                      "kpi_cards":  [
+                                        {
+                                            "PM_SALES":  402,
+                                            "mtd_sales":  277,
+                                            "PMSD_SALES":  320,
+                                            "PM_REVENUE":  285595,
+                                            "MTD_REVENUE":  197913,
+                                            "TODAY_SALES":  9,
+                                            "PMSD_REVENUE":  230849,
+                                            "TODAY_REVENUE":  5839.81
+                                        }
+                                    ],
+                      "leaderboard_metrics":  [
+                                                  {
+                                                      "mtd_sales":  72,
+                                                      "mtd_revenue":  47855.4,
+                                                      "today_sales":  4,
+                                                      "today_revenue":  2115.25,
+                                                      "sales_representative":  "Nidhi "
+                                                  },
+                                                  {
+                                                      "mtd_sales":  71,
+                                                      "mtd_revenue":  55881.4,
+                                                      "today_sales":  0,
+                                                      "today_revenue":  0,
+                                                      "sales_representative":  "Sanika "
+                                                  },
+                                                  {
+                                                      "mtd_sales":  67,
+                                                      "mtd_revenue":  46342.7,
+                                                      "today_sales":  2,
+                                                      "today_revenue":  1438.98,
+                                                      "sales_representative":  "Karishma "
+                                                  },
+                                                  {
+                                                      "mtd_sales":  37,
+                                                      "mtd_revenue":  23876.2,
+                                                      "today_sales":  1,
+                                                      "today_revenue":  761.86,
+                                                      "sales_representative":  "Faizan"
+                                                  },
+                                                  {
+                                                      "mtd_sales":  30,
+                                                      "mtd_revenue":  23957.5,
+                                                      "today_sales":  2,
+                                                      "today_revenue":  1523.72,
+                                                      "sales_representative":  "Prabhat "
+                                                  }
+                                              ]
+                  }
+              ],
+    "Count":  1
+}

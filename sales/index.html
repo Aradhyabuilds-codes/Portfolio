@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Analytics // Sales Intelligence Dashboard</title>
+  
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Lucide Icons (for existing modals) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Confetti.js for celebration animations -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- Loading Screen Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <div id="loading-text" class="loading-text">Connecting to database...</div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Main Application Wrapper -->
+  <div class="dashboard-wrapper">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon-wrapper">
+          <i class="fas fa-chart-line brand-logo-icon" style="color: white; font-size: 1.1rem;"></i>
+        </div>
+        <span class="brand-name">Aura Analytics</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item active" data-tab="dashboard">
+            <a href="#">
+              <i data-lucide="layout-dashboard"></i>
+              <span>Dashboard</span>
+              <span class="badge">Live</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="analytics">
+            <a href="#">
+              <i data-lucide="bar-chart-3"></i>
+              <span>Analytics</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="sales-reps">
+            <a href="#">
+              <i data-lucide="users"></i>
+              <span>Sales Reps</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="customers">
+            <a href="#">
+              <i data-lucide="briefcase"></i>
+              <span>Customers</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="settings">
+            <a href="#">
+              <i data-lucide="settings"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="avatar-placeholder">AR</div>
+          <div class="user-info">
+            <span class="user-name">Aradhya</span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Navigation / Header -->
+      <header class="header">
+        <div class="header-left">
+          <h1 id="page-title">Aura Analytics</h1>
+          <p class="header-subtitle font-jakarta" id="page-subtitle">Real-time Sales Performance & Revenue Leaderboard</p>
+        </div>
+        
+        <div class="header-right">
+          <!-- Live Telemetry Status -->
+          <div class="telemetry-badge">
+            <span class="pulse-indicator"></span>
+            <span class="telemetry-text">Supabase Active</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- TAB PANEL 1: DASHBOARD -->
+      <div id="tab-dashboard" class="tab-panel active">
+        
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+          <!-- Quick Preset Filters -->
+          <div class="quick-filters">
+            <button id="filter-all" class="filter-btn active">
+              <i class="fas fa-history"></i> All Time
+            </button>
+            <button id="filter-jan" class="filter-btn">Jan 2026</button>
+            <button id="filter-feb" class="filter-btn">Feb 2026</button>
+            <button id="filter-mar" class="filter-btn">Mar 2026</button>
+          </div>
+
+          <!-- Custom Calendar Picker -->
+          <div class="date-picker-group">
+            <label for="start-date">From</label>
+            <input type="date" id="start-date">
+            <span class="date-separator">to</span>
+            <label for="end-date">To</label>
+            <input type="date" id="end-date">
+          </div>
+        </div>
+
+        <!-- Key Performance Metrics Grid -->
+        <div class="metrics-grid">
+          <!-- Metric 1: Total Revenue -->
+          <div class="glass-card metric-card revenue">
+            <div class="metric-info">
+              <span class="metric-label">Total Revenue</span>
+              <div class="metric-value" id="metric-revenue">$0.00</div>
+            </div>
+            <div class="metric-icon">
+              <i class="fas fa-wallet"></i>
+            </div>
+          </div>
+
+          <!-- Metric 2: Total Orders -->
+          <div class="glass-card metric-card orders">
+            <div class="metric-info">
+              <span class="metric-label">Total Orders</span>
+              <div class="metric-value" id="metric-orders">0</div>
+            </div>
+            <div class="metric-icon">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+          </div>
+
+          <!-- Metric 3: Average Order Value -->
+          <div class="glass-card metric-card aov">
+            <div class="metric-info">
+              <span class="metric-label">Avg Order Value (AOV)</span>
+              <div class="metric-value" id="metric-aov">$0.00</div>
+            </div>
+            <div class="metric-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+
+          <!-- Metric 4: Active Customers -->
+          <div class="glass-card metric-card agents">
+            <div class="metric-info">
+              <span class="metric-label">Active Customers</span>
+              <div class="metric-value" id="metric-agents">0</div>
+            </div>
+            <div class="metric-icon">
+              <i class="fas fa-user-friends"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div id="charts-empty-msg" class="glass-card empty-state" style="display: none;">
+          <i class="fas fa-chart-pie"></i>
+          <p>No sales records found matching the selected dates. Adjust filters to populate graphs.</p>
+        </div>
+        
+        <div id="charts-content-wrapper" class="charts-grid">
+          <!-- Main Line Area Chart -->
+          <div class="glass-card">
+            <div class="chart-header">
+              <div class="chart-title">
+                <i class="fas fa-wave-square"></i> Revenue Trend Over Time
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="trendChartCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Product Share Doughnut Chart -->
+          <div class="glass-card">
+            <div class="chart-header">
+              <div class="chart-title">
+                <i class="fas fa-chart-pie"></i> Product Contribution
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="productChartCanvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaderboard and Detailed Orders Grid -->
+        <div class="dashboard-details">
+          
+          <!-- Leaderboard Column -->
+          <div class="glass-card">
+            <div class="chart-header" style="justify-content: space-between;">
+              <div class="chart-title">
+                <i class="fas fa-trophy" style="color: var(--accent-amber);"></i> Sales Agent Leaderboard
+              </div>
+              <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Ranked by sales</span>
+            </div>
+            <div class="leaderboard-list-wrapper">
+              <table class="leaderboard-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Representative</th>
+                    <th>Sales</th>
+                    <th>Revenue</th>
+                    <th>Target Progress</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboard-tbody">
+                  <!-- Populated dynamically via app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Recent Orders Table Column -->
+          <div class="glass-card">
+            <div class="orders-header">
+              <div class="chart-title">
+                <i class="fas fa-list-ul"></i> Transaction History
+              </div>
+              
+              <!-- Search box inside table container -->
+              <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search customer, product or order...">
+              </div>
+            </div>
+            
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Order No</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Destination</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-tbody">
+                  <!-- Populated dynamically via app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB PANEL 2: ANALYTICS & COMPARE -->
+      <div id="tab-analytics" class="tab-panel">
+        <div class="analytics-layout">
+          <!-- Monthly Performance Chart (Left side) -->
+          <div class="chart-card monthly-trend-card">
+            <div class="chart-header">
+              <div>
+                <h3>Monthly Performance</h3>
+                <p class="chart-subtitle font-jakarta">Overview of monthly transaction volumes</p>
+              </div>
+            </div>
+            <div class="chart-body">
+              <div class="chart-wrapper">
+                <canvas id="monthly-bar-chart"></canvas>
+              </div>
+              <div class="chart-skeleton" id="monthly-skeleton" style="display: none;">
+                <div class="shimmer-line"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI generated insights (Right side) -->
+          <div class="insights-card">
+            <div class="insights-header">
+              <i data-lucide="sparkles" class="insights-sparkle"></i>
+              <h3>AI Performance Insights</h3>
+            </div>
+            <div class="insights-body" id="ai-insights-container">
+              <!-- Dynamically populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparative Performance Tool -->
+        <section class="comparison-section">
+          <div class="comparison-card">
+            <div class="comparison-header">
+              <div>
+                <h3>Representative Comparison Tool</h3>
+                <p class="chart-subtitle font-jakarta">Compare the performance metrics and sales trends of two agents side-by-side</p>
+              </div>
+              <div class="compare-selectors">
+                <div class="select-wrapper">
+                  <span class="select-label">Agent A</span>
+                  <select id="compare-rep-a" class="custom-select"></select>
+                </div>
+                <div class="compare-vs">VS</div>
+                <div class="select-wrapper">
+                  <span class="select-label">Agent B</span>
+                  <select id="compare-rep-b" class="custom-select"></select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="comparison-body">
+              <!-- Metrics grid comparing A and B -->
+              <div class="compare-metrics-grid">
+                <div class="compare-metric-card">
+                  <span class="compare-metric-title">Range Revenue</span>
+                  <div class="compare-metric-values">
+                    <span class="val-rep-a" id="compare-a-today-rev">$0.00</span>
+                    <span class="compare-divider">|</span>
+                    <span class="val-rep-b" id="compare-b-today-rev">$0.00</span>
+                  </div>
+                </div>
+                <div class="compare-metric-card">
+                  <span class="compare-metric-title">Range Sales</span>
+                  <div class="compare-metric-values">
+                    <span class="val-rep-a" id="compare-a-today-sales">0</span>
+                    <span class="compare-divider">|</span>
+                    <span class="val-rep-b" id="compare-b-today-sales">0</span>
+                  </div>
+                </div>
+                <div class="compare-metric-card">
+                  <span class="compare-metric-title">Total Revenue</span>
+                  <div class="compare-metric-values">
+                    <span class="val-rep-a" id="compare-a-mtd-rev">$0.00</span>
+                    <span class="compare-divider">|</span>
+                    <span class="val-rep-b" id="compare-b-mtd-rev">$0.00</span>
+                  </div>
+                </div>
+                <div class="compare-metric-card">
+                  <span class="compare-metric-title">Total Sales</span>
+                  <div class="compare-metric-values">
+                    <span class="val-rep-a" id="compare-a-mtd-sales">0</span>
+                    <span class="compare-divider">|</span>
+                    <span class="val-rep-b" id="compare-b-mtd-sales">0</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Comparison Chart -->
+              <div class="compare-chart-wrapper">
+                <h4 class="compare-chart-title">Daily Revenue Comparison Trends (MTD)</h4>
+                <div class="chart-wrapper" style="height: 280px;">
+                  <canvas id="compare-trend-chart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- TAB PANEL 3: SALES REPS -->
+      <div id="tab-sales-reps" class="tab-panel">
+        <div class="filter-bar">
+          <div class="search-input-wrapper">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="search-reps" placeholder="Search representatives..." class="custom-filter-input">
+          </div>
+          <div class="filter-select-wrapper">
+            <i data-lucide="filter" class="filter-icon"></i>
+            <select id="filter-rep-tier" class="custom-select-input">
+              <option value="all">All Performance Tiers</option>
+              <option value="top">Top Performers (100%+ Target)</option>
+              <option value="ontrack">On Track (75%-99% Target)</option>
+              <option value="needs-attention">Needs Attention (<75% Target)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="reps-grid" class="reps-grid">
+          <!-- Dynamically populated representative cards -->
+        </div>
+      </div>
+
+      <!-- TAB PANEL 4: CUSTOMERS -->
+      <div id="tab-customers" class="tab-panel">
+        <div class="filter-bar">
+          <div class="search-input-wrapper">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="search-customers" placeholder="Search customers or companies..." class="custom-filter-input">
+          </div>
+          
+          <div class="filter-selects">
+            <div class="filter-select-wrapper">
+              <i data-lucide="filter" class="filter-icon"></i>
+              <select id="filter-customer-tier" class="custom-select-input">
+                <option value="all">All Loyalty Tiers</option>
+                <option value="Platinum">Platinum Tier</option>
+                <option value="Gold">Gold Tier</option>
+                <option value="Silver">Silver Tier</option>
+                <option value="Bronze">Bronze Tier</option>
+              </select>
+            </div>
+            
+            <div class="filter-select-wrapper">
+              <i data-lucide="user" class="filter-icon"></i>
+              <select id="filter-customer-rep" class="custom-select-input">
+                <!-- Dynamically populated list of reps -->
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-card">
+          <div class="table-responsive">
+            <table class="leaderboard-table" id="customers-table">
+              <thead>
+                <tr>
+                  <th>Customer Account</th>
+                  <th>Contact Person</th>
+                  <th>Loyalty Tier</th>
+                  <th>Assigned Representative</th>
+                  <th>MTD Purchases</th>
+                  <th>Total Spent</th>
+                  <th>Last Transaction</th>
+                </tr>
+              </thead>
+              <tbody id="customers-rows">
+                <!-- Dynamically populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 5: SETTINGS & SIMULATION -->
+      <div id="tab-settings" class="tab-panel">
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3>Dashboard Settings</h3>
+            <p class="chart-subtitle font-jakarta">Configure local database and environment properties</p>
+            
+            <div class="settings-form">
+              <div class="settings-group">
+                <label>Baseline Target Monthly Revenue ($)</label>
+                <input type="number" id="settings-rep-target" value="30000" class="custom-filter-input">
+              </div>
+              <div class="settings-group">
+                <button class="btn-refresh" id="btn-save-settings" style="background: var(--gradient-revenue); color: white; border: none; font-weight: bold; width: fit-content;">
+                  <i data-lucide="save"></i>
+                  <span>Save Settings</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <h3>Local Data Management</h3>
+            <p class="chart-subtitle font-jakarta">Manage simulated sales transactions and cache</p>
+            
+            <div class="data-mgmt-buttons">
+              <button class="btn-refresh" id="btn-clear-simulated" style="border-color: var(--accent-red); color: var(--accent-red);">
+                <i data-lucide="trash-2"></i>
+                <span>Clear Simulated Sales</span>
+              </button>
+              
+              <button class="btn-refresh" id="btn-seed-data">
+                <i data-lucide="database"></i>
+                <span>Seed Sample Data</span>
+              </button>
+            </div>
+            
+            <p class="settings-info-text font-jakarta">Note: Clearing simulated sales will reset the metrics to the baseline data retrieved from the Supabase endpoint.</p>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+
+  <!-- FLOATING ACTION BUTTON (SIMULATE SALE) -->
+  <button class="fab-simulate" id="open-simulate-modal-btn">
+    <i data-lucide="plus"></i>
+    <span>Simulate Sale</span>
+  </button>
+
+  <!-- MODAL: SIMULATE SALE -->
+  <div class="modal-overlay" id="modal-simulate">
+    <div class="modal-container glassmorphic-modal">
+      <div class="modal-header">
+        <div class="modal-title-wrapper">
+          <i data-lucide="plus-circle" class="modal-title-icon text-indigo"></i>
+          <h3>Simulate New Sale</h3>
+        </div>
+        <button class="modal-close-btn" id="close-simulate-modal-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      
+      <form id="simulate-sale-form" class="modal-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="sim-rep">Sales Representative</label>
+            <select id="sim-rep" class="custom-select" required></select>
+          </div>
+          
+          <div class="form-group">
+            <label for="sim-customer">Customer Account</label>
+            <select id="sim-customer" class="custom-select" required></select>
+          </div>
+          
+          <div class="form-group">
+            <label for="sim-amount">Sale Amount ($)</label>
+            <div class="input-prefix-wrapper">
+              <span class="input-prefix">$</span>
+              <input type="number" id="sim-amount" step="0.01" min="1" placeholder="500.00" class="custom-input" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="sim-date">Transaction Date</label>
+            <input type="date" id="sim-date" value="2026-03-23" min="2026-03-01" max="2026-03-31" class="custom-input" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="sim-category">Product / Service Category</label>
+            <select id="sim-category" class="custom-select">
+              <option value="Enterprise Software Suite">Enterprise Software Suite</option>
+              <option value="Cloud Migration Consulting">Cloud Migration Consulting</option>
+              <option value="SaaS Subscription Pro">SaaS Subscription Pro</option>
+              <option value="Dedicated Hardware Package">Dedicated Hardware Package</option>
+              <option value="Priority Support SLA (Annual)">Priority Support SLA (Annual)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancel-simulate-modal-btn">Cancel</button>
+          <button type="submit" class="btn-submit">Record Transaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: REPRESENTATIVE DEEP-DIVE -->
+  <div class="modal-overlay" id="modal-rep-detail">
+    <div class="modal-container glassmorphic-modal large-modal">
+      <div class="modal-header">
+        <div class="modal-title-wrapper">
+          <i data-lucide="user-check" class="modal-title-icon text-teal"></i>
+          <h3 id="rep-detail-title">Sales Representative Profile</h3>
+        </div>
+        <button class="modal-close-btn" id="close-rep-modal-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      
+      <div class="modal-body rep-detail-body">
+        <div class="rep-detail-header-card">
+          <div class="rep-avatar large-avatar" id="rep-detail-avatar">--</div>
+          <div class="rep-header-info">
+            <h2 id="rep-detail-name">Representative Name</h2>
+            <p class="rep-detail-role text-muted" id="rep-detail-role">Role Description</p>
+            <div class="rep-detail-badge" id="rep-detail-tier-badge">Tier Badge</div>
+          </div>
+        </div>
+
+        <div class="rep-detail-content-grid">
+          <!-- Stats Summary Column -->
+          <div class="rep-stats-column">
+            <h4 class="section-sub-title">Performance Metrics</h4>
+            <div class="rep-stats-grid">
+              <div class="rep-stat-box">
+                <span class="rep-stat-label">Today's Revenue</span>
+                <span class="rep-stat-value text-indigo" id="rep-detail-today-rev">$0.00</span>
+              </div>
+              <div class="rep-stat-box">
+                <span class="rep-stat-label">Today's Sales</span>
+                <span class="rep-stat-value text-teal" id="rep-detail-today-sales">0</span>
+              </div>
+              <div class="rep-stat-box">
+                <span class="rep-stat-label">MTD Total Revenue</span>
+                <span class="rep-stat-value text-violet" id="rep-detail-mtd-rev">$0.00</span>
+              </div>
+              <div class="rep-stat-box">
+                <span class="rep-stat-label">MTD Sales Count</span>
+                <span class="rep-stat-value text-pink" id="rep-detail-mtd-sales">0</span>
+              </div>
+            </div>
+            
+            <div class="rep-target-section">
+              <span class="rep-stat-label">Monthly Target Progress ($30,000)</span>
+              <div class="progress-container" style="width: 100%; margin-top: 8px;">
+                <div class="progress-bar-wrapper" style="height: 10px;">
+                  <div class="progress-fill" id="rep-detail-progress-fill"></div>
+                </div>
+                <span class="progress-text" id="rep-detail-progress-text">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio & Core Info -->
+          <div class="rep-bio-column">
+            <h4 class="section-sub-title">Representative Bio & Context</h4>
+            <div class="rep-bio-card font-jakarta">
+              <p id="rep-detail-bio">No bio available for this sales representative.</p>
+              <div class="rep-bio-footer">
+                <div class="bio-meta-item"><i data-lucide="mail"></i> <span id="rep-detail-email">rep@apexanalytics.com</span></div>
+                <div class="bio-meta-item"><i data-lucide="phone"></i> <span id="rep-detail-phone">+1 (555) 019-2834</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rep-lists-tabs-wrapper">
+          <div class="rep-lists-tabs-header">
+            <button class="rep-tab-btn active" id="btn-rep-tab-customers">Assigned Clients</button>
+            <button class="rep-tab-btn" id="btn-rep-tab-transactions">Recent Transactions</button>
+          </div>
+          
+          <div class="rep-tab-content-container">
+            <!-- Client list -->
+            <div class="rep-tab-content active" id="rep-tab-content-customers">
+              <div class="table-responsive">
+                <table class="leaderboard-table compact-table">
+                  <thead>
+                    <tr>
+                      <th>Customer Company</th>
+                      <th>Loyalty Tier</th>
+                      <th>MTD Sales Count</th>
+                      <th>Total Spend ($)</th>
+                      <th>Last Transaction</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rep-detail-customers-rows">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <!-- Transactions list -->
+            <div class="rep-tab-content" id="rep-tab-content-transactions">
+              <div class="table-responsive">
+                <table class="leaderboard-table compact-table">
+                  <thead>
+                    <tr>
+                      <th>Transaction ID</th>
+                      <th>Customer Account</th>
+                      <th>Date</th>
+                      <th>Product / Service</th>
+                      <th>Amount ($)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rep-detail-transactions-rows">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CUSTOMER PROFILE -->
+  <div class="modal-overlay" id="modal-customer-detail">
+    <div class="modal-container glassmorphic-modal">
+      <div class="modal-header">
+        <div class="modal-title-wrapper">
+          <i data-lucide="briefcase" class="modal-title-icon text-violet"></i>
+          <h3 id="cust-detail-title">Customer Account Profile</h3>
+        </div>
+        <button class="modal-close-btn" id="close-customer-modal-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      
+      <div class="modal-body cust-detail-body">
+        <div class="cust-detail-header-card">
+          <div class="cust-initials" id="cust-detail-initials">AC</div>
+          <div class="cust-header-info">
+            <h2 id="cust-detail-company">Company Account</h2>
+            <p class="cust-detail-contact text-muted" id="cust-detail-contact-name">Contact Person</p>
+            <div class="cust-detail-badge" id="cust-detail-tier-badge">Platinum Tier</div>
+          </div>
+        </div>
+
+        <div class="cust-detail-info-grid">
+          <div class="cust-info-card">
+            <h4>Account Contacts</h4>
+            <div class="cust-contact-details font-jakarta">
+              <div class="bio-meta-item"><i data-lucide="mail"></i> <span id="cust-detail-email">billing@company.com</span></div>
+              <div class="bio-meta-item"><i data-lucide="phone"></i> <span id="cust-detail-phone">+1 (555) 012-3456</span></div>
+              <div class="bio-meta-item"><i data-lucide="globe"></i> <span id="cust-detail-website">www.company.com</span></div>
+            </div>
+          </div>
+          
+          <div class="cust-info-card">
+            <h4>Assigned Executive</h4>
+            <div class="cust-rep-info-block">
+              <div class="rep-avatar" id="cust-detail-rep-avatar">--</div>
+              <div class="rep-mini-info">
+                <span class="rep-name" id="cust-detail-rep-name">Sales Executive Name</span>
+                <span class="user-role" id="cust-detail-rep-role">Executive Agent</span>
+              </div>
+              <button class="btn-refresh btn-sm" id="btn-view-assigned-rep" style="margin-left: auto; padding: 6px 12px; font-size: 0.75rem;">Profile</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cust-metrics-grid">
+          <div class="cust-metric-box">
+            <span class="rep-stat-label">Total Spend</span>
+            <span class="rep-stat-value text-indigo" id="cust-detail-total-spend">$0.00</span>
+          </div>
+          <div class="cust-metric-box">
+            <span class="rep-stat-label">Total Transactions</span>
+            <span class="rep-stat-value text-teal" id="cust-detail-total-orders">0</span>
+          </div>
+          <div class="cust-metric-box">
+            <span class="rep-stat-label">Last Purchase Date</span>
+            <span class="rep-stat-value text-violet" id="cust-detail-last-date">2026-03-23</span>
+          </div>
+        </div>
+
+        <div class="cust-history-section">
+          <h4 class="section-sub-title">Purchase Timeline</h4>
+          <div class="table-responsive">
+            <table class="leaderboard-table compact-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Product Category</th>
+                  <th>Executive Rep</th>
+                  <th>Amount ($)</th>
+                </tr>
+              </thead>
+              <tbody id="cust-detail-history-rows">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
